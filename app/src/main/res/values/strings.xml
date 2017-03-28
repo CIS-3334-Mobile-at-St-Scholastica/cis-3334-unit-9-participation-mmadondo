@@ -10,4 +10,9 @@
     <string name="mary_jackson">Mary Jackson</string>
     <string name="my_study_group">My Study Group</string>
     <string name="title_activity_settings">"Settings "</string>
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="email">email</string>
+    <string name="sms">sms</string>
+    <string name="menu_item_list">menu_item_list</string>
 </resources>

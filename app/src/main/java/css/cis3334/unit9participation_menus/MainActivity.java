@@ -1,5 +1,7 @@
 package css.cis3334.unit9participation_menus;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +71,48 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
+
+        } else if (id == R.id.action_add) {
+
+            Toast.makeText(getApplicationContext(), "Adding study mates is not available yet.", Toast.LENGTH_LONG).show();
+            return true;
+
+        } else if (id == R.id.action_delete) {
+
+            Toast.makeText(getApplicationContext(), "Deleting a study mate is not available yet.", Toast.LENGTH_LONG).show();
+            return true;
+
+        } else if (id == R.id.action_email) {
+
+            String[] addresses = {};
+            String subject = "Read, Review, Revise.";
+
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+
+            intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+            if (intent.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(intent);
+            }
+
+        }else if (id == R.id.action_sms) {
+            String message = "Let's meet at the Library at noon.";
+            Intent intent = new Intent(Intent.ACTION_SEND);
+
+            intent.setData(Uri.parse("smsto:"));  // This ensures only SMS apps respond
+            intent.putExtra("sms_body", message);
+
+            if (intent.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(intent);
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -92,6 +136,49 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }else         if (id == R.id.action_settings) {
+
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+
+        } else if (id == R.id.action_add) {
+
+            Toast.makeText(getApplicationContext(), "Adding study mates is not available yet.", Toast.LENGTH_LONG).show();
+            return true;
+
+        } else if (id == R.id.action_delete) {
+
+            Toast.makeText(getApplicationContext(), "Deleting a study mate is not available yet.", Toast.LENGTH_LONG).show();
+            return true;
+
+        } else if (id == R.id.action_email) {
+
+            String[] addresses = {};
+            String subject = "Read, Review, Revise.";
+
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+
+            intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+            if (intent.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(intent);
+            }
+
+        }else if (id == R.id.action_sms) {
+            String message = "Let's meet at the Library at noon.";
+            Intent intent = new Intent(Intent.ACTION_SEND);
+
+            intent.setData(Uri.parse("smsto:"));  // This ensures only SMS apps respond
+            intent.putExtra("sms_body", message);
+
+            if (intent.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(intent);
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
